@@ -79,9 +79,12 @@ rootfs: base.tar.xz profile
 		libffi \
 		sed \
 		zlib-devel
-	sudo chroot rootfs /bin/dnf upgrade --refresh rpm glibc
+	sudo chroot rootfs /bin/dnf upgrade -y --refresh \
+		rpm \
+		glibc
 	sudo chroot rootfs /bin/rm /var/lib/rpm/.rpm.lock
-	sudo chroot rootfs /bin/dnf upgrade dnf	
+	sudo chroot rootfs /bin/dnf upgrade -y \
+		dnf	
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		python36 \
 		python3-pip \

@@ -53,12 +53,12 @@ rootfs: base.tar.xz profile
 	sudo cp -f profile rootfs/etc/profile
 	sudo chroot rootfs /bin/dnf clean all 
 	sudo chroot rootfs /bin/rm -r /var/cache/dnf
-	sudo chroot rootfs /bin/dnf upgrade -y 
+	sudo chroot rootfs /bin/dnf upgrade -yv 
+	sudo chroot rootfs /bin/dnf update -yv
+	sudo chroot rootfs /bin/dnf install \
+		epel-release -y
 	sudo chroot rootfs /bin/dnf update -y
-	sudo chroot rootfs /bin/dnf install \
-		epel-release
-	sudo chroot rootfs /bin/dnf update
-	sudo chroot rootfs /bin/dnf install \
+	sudo chroot rootfs /bin/dnf install -y \
 		bash \
 		bash-completion \
 		sudo \

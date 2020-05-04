@@ -6,7 +6,7 @@ param(
 Start-Transcript -path C:\TEMP\install-wsl.log -append
 
 # Set distro name
-$wslDistro = (Get-ChildItem -Path .\Alpine*.exe).Name
+$wslDistro = (Get-ChildItem -Path .\CentOS*.exe).Name
 $distroName = $wslDistro.Split('.')[0]
 $wslPath = "C:\Users\$user\.wsl\$distroName"
 $TargetFile = "$wslPath\$wslDistro"
@@ -31,7 +31,7 @@ Invoke-Command -ScriptBlock { Copy-Item -Recurse -Path .\ -Destination $args[0] 
 
 Start-Process wsl.exe -ArgumentList "--set-default-version 2" -NoNewWindow -Wait
 Start-Process $wslPath\$wslDistro -NoNewWindow -Wait
-Start-Process $wslPath\$wslDistro -ArgumentList "run cd /usr/share/textlive/texmf-dist/tex/latex/acrotex; sudo latex acrotex.ins" -NoNewWindow -Wait # would like to add this to makefile
+Start-Process $wslPath\$wslDistro -ArgumentList "run cd /usr/share/texlive/texmf-dist/tex/latex/acrotex; sudo latex acrotex.ins" -NoNewWindow -Wait # would like to add this to makefile
 Start-Process $wslPath\$wslDistro -ArgumentList "run sudo mktexlsr" -NoNewWindow -Wait # would like to add this to makefile
 Start-Process $wslPath\$wslDistro -ArgumentList "run sudo git config --system core.autocrlf false"  -NoNewWindow -Wait
 Start-Process $wslPath\$wslDistro -ArgumentList "run sudo git config --system core.symlinks false"  -NoNewWindow -Wait
@@ -44,8 +44,8 @@ Write-Host -ForegroundColor Green ("`nInstallation of Windows Subsystem for Linu
 # Configure user for WSL Distro
 Write-Host -ForegroundColor Yellow ("`nConfiguring user:$user for Windows Subsystem for Linux (WSL), $distroName Linux")
 Write-Host -ForegroundColor Yellow ("`nSet password for $user when prompted")
-Start-Process $wslPath\$wslDistro -ArgumentList "run adduser $user --shell bash --uid 1000" -NoNewWindow -Wait
-Start-Process $wslPath\$wslDistro -ArgumentList "run echo '$user ALL=(ALL) ALL' >> /etc/sudoers" -NoNewWindow -Wait
+Start-Process $wslPath\$wslDistro -ArgumentList "run adduser $user --uid 1000" -NoNewWindow -Wait
+Start-Process $wslPath\$wslDistro -ArgumentList "run usermod -aG wheel $user" -NoNewWindow -Wait
 Start-Process $wslPath\$wslDistro -ArgumentList "config --default-uid 1000" -NoNewWindow -Wait
 Start-Process $wslPath\$wslDistro -ArgumentList "config --default-term wt" -NoNewWindow -Wait
 Start-Process $wslPath\$wslDistro -ArgumentList "run echo export PLANTUML=/usr/local/plantuml.jar >> ~/.bash_profile"  -NoNewWindow -Wait # would like to add this to makefile

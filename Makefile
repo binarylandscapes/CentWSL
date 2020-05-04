@@ -82,10 +82,10 @@ rootfs: base.tar.xz profile
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		python36 \
 		python3-pip \
-		python36-dev \
+		python36-devel \
 		python3-numpy \
 		graphviz \
-		openjdk8 \
+		java-11-openjdk-headless \
 		ghostscript \
 		dejavu-sans-fonts \
 		dejavu-sans-mono-fonts \

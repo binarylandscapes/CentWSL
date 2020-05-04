@@ -52,8 +52,6 @@ rootfs: base.tar.xz profile
 	sudo tar -xpf base.tar.xz -C rootfs
 	sudo cp -f /etc/resolv.conf rootfs/etc/resolv.conf
 	sudo cp -f profile rootfs/etc/profile
-	sudo chroot rootfs /bin/dnf upgrade -y
-	sudo chroot rootfs /bin/dnf update -y
 	sudo chroot rootfs /bin/dnf install -y \
 		epel-release
 	sudo chroot rootfs /bin/dnf update -y

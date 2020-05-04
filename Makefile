@@ -78,7 +78,7 @@ rootfs: base.tar.xz profile
 		gmp \
 		libffi \
 		sed \
-		zlib-devel \
+		zlib-devel
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		python36 \
 		python3-pip \

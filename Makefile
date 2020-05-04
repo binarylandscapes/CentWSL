@@ -50,6 +50,7 @@ rootfs: base.tar.xz profile
 	@echo -e '\e[1;31mBuilding rootfs...\e[m'
 	mkdir rootfs
 	sudo tar -xpf base.tar.xz -C rootfs
+	sudo cp -f /etc/resolv.conf rootfs/etc/resolv.conf
 	sudo cp -f profile rootfs/etc/profile
 	sudo chroot rootfs /bin/dnf clean all 
 	sudo chroot rootfs /bin/rm -r /var/cache/dnf

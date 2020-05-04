@@ -51,11 +51,11 @@ rootfs: base.tar.xz profile
 	mkdir rootfs
 	sudo tar -xpf base.tar.xz -C rootfs
 	sudo cp -f profile rootfs/etc/profile
-	sudo chroot rootfs /sbin/dnf update
-	sudo chroot rootfs /sbin/dnf install \
+	sudo chroot rootfs /bin/dnf update
+	sudo chroot rootfs /bin/dnf install \
 		epel-release
-	sudo chroot rootfs /sbin/dnf update
-	sudo chroot rootfs /sbin/dnf install \
+	sudo chroot rootfs /bin/dnf update
+	sudo chroot rootfs /bin/dnf install \
 		bash \
 		bash-completion \
 		sudo \
@@ -72,14 +72,14 @@ rootfs: base.tar.xz profile
 		neofetch \
 		openssh \
 		nano
-	sudo chroot rootfs /sbin/dnf install \
+	sudo chroot rootfs /bin/dnf install \
 		gcc \
 		ghc-srpm-macros \
 		gmp \
 		libffi \
 		sed \
 		zlib-devel \
-	sudo chroot rootfs /sbin/dnf install \
+	sudo chroot rootfs /bin/dnf install \
 		python36 \
 		python3-pip \
 		python36-dev \
@@ -91,9 +91,9 @@ rootfs: base.tar.xz profile
 		dejavu-sans-mono-fonts \
 		dejavu-serif-fonts \
 		texlive-*
-	sudo chroot rootfs /sbin/dnf --enablerepo=PowerTools install \
+	sudo chroot rootfs /bin/dnf --enablerepo=PowerTools install \
 		python3-Cython
-	sudo chroot rootfs /sbin/dnf install \
+	sudo chroot rootfs /bin/dnf install \
 		openssl \
 		icu \
 		krb5-libs \

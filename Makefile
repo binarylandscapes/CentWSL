@@ -55,12 +55,13 @@ rootfs: base.tar.xz profile
 	sudo chroot rootfs /bin/dnf install -y \
 		epel-release --nogpgcheck
 	sudo chroot rootfs /bin/dnf install -y \
+		coreutils-common
+	sudo chroot rootfs /bin/dnf install -y \
 		bash \
 		bash-completion \
 		sudo \
 		passwd \
 		make \
-		coreutils \
 		wget \
 		curl \
 		zip \
@@ -70,7 +71,7 @@ rootfs: base.tar.xz profile
 		genisoimage \
 		neofetch \
 		openssh \
-		nano
+		nano 
 	sudo chroot rootfs /bin/dnf install -y \
 		gcc \
 		ghc-srpm-macros \

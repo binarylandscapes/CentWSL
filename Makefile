@@ -52,11 +52,11 @@ rootfs: base.tar.xz profile
 	sudo tar -xpf base.tar.xz -C rootfs
 	sudo cp -f /etc/resolv.conf rootfs/etc/resolv.conf
 	sudo cp -f profile rootfs/etc/profile
-	sudo chroot rootfs /bin/dnf install -y \
-		epel-release --nogpgcheck
-	sudo chroot rootfs /bin/dnf install -y \
+	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
+		epel-release
+	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		coreutils-common
-	sudo chroot rootfs /bin/dnf install -y \
+	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		bash \
 		bash-completion \
 		sudo \
@@ -72,14 +72,14 @@ rootfs: base.tar.xz profile
 		neofetch \
 		openssh \
 		nano 
-	sudo chroot rootfs /bin/dnf install -y \
+	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		gcc \
 		ghc-srpm-macros \
 		gmp \
 		libffi \
 		sed \
 		zlib-devel \
-	sudo chroot rootfs /bin/dnf install -y \
+	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		python36 \
 		python3-pip \
 		python36-dev \
@@ -91,9 +91,9 @@ rootfs: base.tar.xz profile
 		dejavu-sans-mono-fonts \
 		dejavu-serif-fonts \
 		texlive-*
-	sudo chroot rootfs /bin/dnf --enablerepo=PowerTools install -y \
+	sudo chroot rootfs /bin/dnf --enablerepo=PowerTools install -y --nogpgcheck \
 		python3-Cython
-	sudo chroot rootfs /bin/dnf install -y \
+	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		openssl \
 		icu \
 		krb5-libs \

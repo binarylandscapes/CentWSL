@@ -55,6 +55,8 @@ rootfs: base.tar.xz profile
 	sudo cp -f profile rootfs/etc/profile
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		epel-release
+	sudo chroot rootfs /bin/dnf config-manager --set-enabled \
+		PowerTools
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		coreutils-common \
 		bash \
@@ -106,7 +108,6 @@ rootfs: base.tar.xz profile
 		python3-pip \
 		python36-devel \
 		python3-numpy \
-	sudo chroot rootfs /bin/dnf --enablerepo=PowerTools install -y --nogpgcheck \
 		python3-Cython
 	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		pip \

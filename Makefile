@@ -89,8 +89,7 @@ rootfs: base.tar.xz profile
 		ghostscript \
 		dejavu-sans-fonts \
 		dejavu-sans-mono-fonts \
-		dejavu-serif-fonts \
-		texlive-*
+		dejavu-serif-fonts
 	sudo chroot rootfs /bin/dnf --enablerepo=PowerTools install -y --nogpgcheck \
 		python3-Cython
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
@@ -105,6 +104,8 @@ rootfs: base.tar.xz profile
 		desktop-file-utils \
 		xprop \
 		xorg-x11-server-Xvfb
+	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
+		texlive-*
 	sudo chroot rootfs \
 		/usr/bin/$(DLR) $(DLR_FLAGS) $(PLANTUML_URL) \
 		-o /usr/local/plantuml.jar

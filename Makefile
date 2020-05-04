@@ -53,8 +53,7 @@ rootfs: base.tar.xz profile
 	sudo cp -f /etc/resolv.conf rootfs/etc/resolv.conf
 	sudo cp -f profile rootfs/etc/profile
 	sudo chroot rootfs /bin/dnf install -y \
-		epel-release
-	sudo chroot rootfs /bin/dnf update -y
+		epel-release --nogpgcheck
 	sudo chroot rootfs /bin/dnf install -y \
 		bash \
 		bash-completion \

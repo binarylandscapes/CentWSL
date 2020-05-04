@@ -103,7 +103,8 @@ rootfs: base.tar.xz profile
 		libsecret \
 		gnome-keyring \
 		desktop-file-utils \
-		xprop
+		xprop \
+		xorg-x11-server-Xvfb
 	sudo chroot rootfs \
 		/usr/bin/$(DLR) $(DLR_FLAGS) $(PLANTUML_URL) \
 		-o /usr/local/plantuml.jar
@@ -131,8 +132,7 @@ rootfs: base.tar.xz profile
 		reportlab \
 		colorama \
 		xlsxwriter \
-		pandas \
-		vscod
+		pandas
 	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		tablib \
 		ciscoconfparse \

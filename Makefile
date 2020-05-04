@@ -51,7 +51,6 @@ rootfs: base.tar.xz profile
 	mkdir rootfs
 	sudo tar -xpf base.tar.xz -C rootfs
 	sudo cp -f profile rootfs/etc/profile
-	sudo chroot rootfs /bin/dnf update
 	sudo chroot rootfs /bin/dnf install \
 		epel-release
 	sudo chroot rootfs /bin/dnf update

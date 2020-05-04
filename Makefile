@@ -56,8 +56,7 @@ rootfs: base.tar.xz profile
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		epel-release
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
-		coreutils-common
-	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
+		coreutils-common \
 		bash \
 		bash-completion \
 		sudo \
@@ -72,29 +71,15 @@ rootfs: base.tar.xz profile
 		genisoimage \
 		neofetch \
 		openssh \
-		nano 
-	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
+		nano \
+		ruby \
+		ruby-devel \
 		gcc \
 		ghc-srpm-macros \
 		gmp \
 		libffi \
 		sed \
-		zlib-devel
-	sudo chroot rootfs /bin/rm /var/lib/rpm/.rpm.lock
-	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
-		python36 \
-		python3-pip \
-		python36-devel \
-		python3-numpy \
-		graphviz \
-		java-11-openjdk-headless \
-		ghostscript \
-		dejavu-sans-fonts \
-		dejavu-sans-mono-fonts \
-		dejavu-serif-fonts
-	sudo chroot rootfs /bin/dnf --enablerepo=PowerTools install -y --nogpgcheck \
-		python3-Cython
-	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
+		zlib-devel \
 		openssl \
 		icu \
 		krb5-libs \
@@ -105,12 +90,23 @@ rootfs: base.tar.xz profile
 		gnome-keyring \
 		desktop-file-utils \
 		xprop \
-		xorg-x11-server-Xvfb
+		xorg-x11-server-Xvfb \
+		texlive-* \
+		graphviz \
+		java-11-openjdk-headless \
+		ghostscript \
+		dejavu-sans-fonts \
+		dejavu-sans-mono-fonts \
+		dejavu-serif-fonts \
+		ansible
+	sudo chroot rootfs /bin/rm /var/lib/rpm/.rpm.lock
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
-		texlive-*
-	sudo chroot rootfs \
-		/usr/bin/$(DLR) $(DLR_FLAGS) $(PLANTUML_URL) \
-		-o /usr/local/plantuml.jar
+		python36 \
+		python3-pip \
+		python36-devel \
+		python3-numpy \
+	sudo chroot rootfs /bin/dnf --enablerepo=PowerTools install -y --nogpgcheck \
+		python3-Cython
 	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		pip \
 		wheel
@@ -135,8 +131,7 @@ rootfs: base.tar.xz profile
 		reportlab \
 		colorama \
 		xlsxwriter \
-		pandas
-	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
+		pandas \
 		tablib \
 		ciscoconfparse \
 		nety \
@@ -145,10 +140,12 @@ rootfs: base.tar.xz profile
 		sphinxcontrib-confluencebuilder \
 		pyyaml \
 		yamlreader \
-		sphinxcontrib-drawio
-	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
+		sphinxcontrib-drawio \
 		sphinx-markdown-builder \
 		sphinxcontrib-fulltoc
+	sudo chroot rootfs \
+		/usr/bin/$(DLR) $(DLR_FLAGS) $(PLANTUML_URL) \
+		-o /usr/local/plantuml.jar
 	sudo chroot rootfs \
 		/usr/bin/$(DLR) $(DLR_FLAGS) $(ACROTEX_URL) \
 		-o /tmp/acrotex.zip

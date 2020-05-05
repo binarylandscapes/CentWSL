@@ -51,6 +51,7 @@ Start-Process $wslPath\$wslDistro -ArgumentList "config --default-term wt" -NoNe
 Start-Process $wslPath\$wslDistro -ArgumentList "run echo export PLANTUML=/usr/local/plantuml.jar >> ~/.bash_profile"  -NoNewWindow -Wait # would like to add this to makefile
 Start-Process $wslPath\$wslDistro -ArgumentList "run echo neofetch >> ~/.bash_profile"  -NoNewWindow -Wait # would like to add this to makefile
 Start-Process $wslPath\$wslDistro -ArgumentList "run echo from pprint import pprint >> ~/.pyrc"  -NoNewWindow -Wait # would like to add this to makefile
+Start-Process $wslPath\$wslDistro -ArgumentList "run echo export DISPLAY=:1 >> ~/.bash_profile"  -NoNewWindow -Wait # would like to add this to makefile
 Start-Process $wslPath\$wslDistro -ArgumentList "run git config --global user.name $user"  -NoNewWindow -Wait
 Start-Process $wslPath\$wslDistro -ArgumentList "run git config --global user.email '$email'"  -NoNewWindow -Wait
 

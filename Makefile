@@ -54,7 +54,8 @@ rootfs: base.tar.xz profile
 	sudo cp -f /etc/resolv.conf rootfs/etc/resolv.conf
 	sudo cp -f profile rootfs/etc/profile
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
-		epel-release
+		epel-release \
+		dnf-plugins-core
 	sudo chroot rootfs /bin/dnf config-manager --set-enabled \
 		PowerTools
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \

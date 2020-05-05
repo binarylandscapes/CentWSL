@@ -45,6 +45,7 @@ Write-Host -ForegroundColor Green ("`nInstallation of Windows Subsystem for Linu
 Write-Host -ForegroundColor Yellow ("`nConfiguring user:$user for Windows Subsystem for Linux (WSL), $distroName Linux")
 Write-Host -ForegroundColor Yellow ("`nSet password for $user when prompted")
 Start-Process $wslPath\$wslDistro -ArgumentList "run adduser $user --uid 1000" -NoNewWindow -Wait
+Start-Process $wslPath\$wslDistro -ArgumentList "run passwd $user -NoNewWindow -Wait
 Start-Process $wslPath\$wslDistro -ArgumentList "run usermod -aG wheel $user" -NoNewWindow -Wait
 Start-Process $wslPath\$wslDistro -ArgumentList "config --default-uid 1000" -NoNewWindow -Wait
 Start-Process $wslPath\$wslDistro -ArgumentList "config --default-term wt" -NoNewWindow -Wait

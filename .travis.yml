@@ -13,17 +13,19 @@ before_script:
 - sudo apt-get update -qq
 - sudo apt-get install make curl zip unzip check texlive-full -qq
 script:
-- make
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
+  - make
 notifications:
   email: false
 deploy:
   provider: releases
   file_glob: true
-  file: 'CentOS*.{zip}'
+  file: CentOS*.{zip}
   on:
     repo: binarylandscapes/CentWSL
     tags: true
     all_branches: true
   skip_cleanup: true
-  api-key:
-    secure: e5JixDoISoNlFfISmRFy6hUBqxy6Gdm3QlWqoMzkJodGASBY9MdfFdkFStMUw3G+pNhCD6jzZXT1cfQYUaQOBe/QLpOV+PWnA+v7cEq250sPZ9ydXK5LsgOX+BnCVPfSE3mxtWNvvaImxDOo4KbHLaqun0KOx2RXa9WW0a3YSDfGIvGi//t/a+lTTBRbx00o3kWuKsT2aiZweqJG5vSTcbQCAmYsTHT1y69vKG3UcK+vSmQCqu1pQXETd9A6fmkrOk/qbL5nDanIrylM3R0FPNEWOfZDS7VxNXhoPIOfh1FjKFtGg79NWefqCRcHrGZw+Z3yNnu3OIH71wAxnMbnTcpj06PQZWMccoUZ7uHk/1tW0n/i//7E+2vdY9n/KMD6fcE820yxa76SUXjHjHRy9XkZLpk4SkDgLheBaR6sewC39BOora/v5Wb1ChjDYT4p6HGtkX2sNhRqNaMbftRnp1x+BYIn19+GTU8hPXYRguKCOTe2+LMLCBkdhCTecSIKaSFBdNQdHvX0eVQbvi2agcN4yCYxj2RZ799B0j0rL9/GdVdRYLcX4HG+1nyGHoFN42GICsbiWtRwxu17zSSfmrYbqw7mHoaUQbzjNWAZNdqqo8rs+u7GYxkCsoku0LJBxRoBdwuCV2WkRdj5MsokxyVgilWSqmM6RuJGtHqLtVw=
+  token:
+    secure: GjnN+c6OoTTbmEHgnI6jUOC99s1PAUjEqTkyvKK5P+ALMjFzbwe7AUqTkJrqPPr8FEjQx1O9m5W8WZQs7EJI9nWZmV78ixOIlOpH1IO9FBLW+7xTaqpAsT3p7qdUdw9bjelg558CsfKzPqQLEt1gf4BVN0TC0n+bComFC4kNKYBAl0bYucnF0XLcg+wcxWz0ZNLywZNiNzdOtdKBsTylJEKO2Sv2ksw6N2slckqlzDdQUKdfkXldQtmOk54FWgvYV1sO7NIGgjMZkKq/ztmgUnWQJklwODiiFMdXrHkONFHfvlXNKOAMIQg8N2AAuqPLBPi7hD7LSBsszPO/3l54ijixXT9JKjl2waKTPuYL1VqPnKvQAPUKsWNR/h4Ofm7Zr3tmh5x+ar9hCk6TJAuunUKz2JDVfeSrETzz1c/wfWZf7fTMauVt+UTIDZYgEXCl89fePH+YAL1DsAQ+Tce+ogaRggye1oztGvGNXyYW1oUzPyl2Fc1QkaJIo1JTOpvZltiduxLgwZFlqRyfUPiN2DGLb2Bf+KJ2UC7cHeJ4WhXR+DOGxcL5E28zfJf9oRwjH/viZ42f31bQIL/TrWEZKOwqGprXushCQKpHrznjFUTj849ghmpNI2AfwhpvEKe1iPiqm1MQjTPOTvIr2dv0/VNVg3Xc8OJukTEoO2mIVow=

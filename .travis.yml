@@ -13,7 +13,9 @@ before_script:
 - sudo apt-get update -qq
 - sudo apt-get install make curl zip unzip check texlive-full -qq
 script:
-- make
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
+  - make
 notifications:
   email: false
 deploy:

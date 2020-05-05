@@ -9,9 +9,10 @@ LNCR_ZIP_EXE=CentOS.exe
 
 PLANTUML_URL=http://sourceforge.net/projects/plantuml/files/plantuml.jar/download
 ACROTEX_URL=http://mirrors.ctan.org/macros/latex/contrib/acrotex.zip
-DRAWIO_URL=https://github.com/jgraph/drawio-desktop/releases/download/v13.0.3/draw.io-x86_64-13.0.3.rpm
-INSTALL_PS_SCRIPT=https://raw.githubusercontent.com/binarylandscapes/AlpineWSL/master/install.ps1
-FEATURE_PS_SCRIPT=https://raw.githubusercontent.com/binarylandscapes/AlpineWSL/master/addWSLfeature.ps1
+DRAWIO_URL=https://github.com/jgraph/drawio-desktop/releases/download/v12.6.5/draw.io-x86_64-12.6.5.rpm
+
+INSTALL_PS_SCRIPT=https://raw.githubusercontent.com/binarylandscapes/CentWSL/$(BRANCH)/install.ps1
+FEATURE_PS_SCRIPT=https://raw.githubusercontent.com/binarylandscapes/CentWSL/$(BRANCH)/addWSLfeature.ps1
 
 all: $(OUT_ZIP)
 

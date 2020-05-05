@@ -96,7 +96,7 @@ rootfs: base.tar.xz profile
 		xorg-x11-server-Xvfb \
 		texlive-* \
 		graphviz \
-		java-11-openjdk-headless \
+		java-11-openjdk \
 		ghostscript \
 		dejavu-sans-fonts \
 		dejavu-sans-mono-fonts \

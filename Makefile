@@ -144,10 +144,10 @@ rootfs: base.tar.xz profile
 		sphinxcontrib-drawio \
 		sphinx-markdown-builder
 	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
-		sphinxcontrib-fulltoc
-	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		pip \
 		wheel
+	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
+		sphinxcontrib-fulltoc
 	sudo chroot rootfs \
 		/usr/bin/$(DLR) $(DLR_FLAGS) $(PLANTUML_URL) \
 		-o /usr/local/plantuml.jar

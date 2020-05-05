@@ -122,7 +122,6 @@ rootfs: base.tar.xz profile
 		numpy \
 		cython \
 		nety \
-		pyyaml \
 		yamlreader \
 		netaddr \
 		gitpython \

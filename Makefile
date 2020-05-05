@@ -109,9 +109,6 @@ rootfs: base.tar.xz profile
 		python3-pip \
 		python36-devel
 	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
-		pip \
-		wheel
-	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		sphinx \
 		sphinx-autobuild \
 		sphinx_rtd_theme \
@@ -122,6 +119,7 @@ rootfs: base.tar.xz profile
 		numpy \
 		cython \
 		nety \
+		pyyaml \
 		yamlreader \
 		netaddr \
 		gitpython \
@@ -146,6 +144,9 @@ rootfs: base.tar.xz profile
 		sphinxcontrib-drawio \
 		sphinx-markdown-builder \
 		sphinxcontrib-fulltoc
+	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
+		pip \
+		wheel
 	sudo chroot rootfs \
 		/usr/bin/$(DLR) $(DLR_FLAGS) $(PLANTUML_URL) \
 		-o /usr/local/plantuml.jar

@@ -114,9 +114,24 @@ rootfs: base.tar.xz profile
 	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		sphinx \
 		sphinx-autobuild \
+		sphinx_rtd_theme \
 		sphinx-jinja \
+		sphinx-git \
+		pandas \
+		tablib \
+		numpy \
+		cython \
+		nety \
+		pyyaml \
+		yamlreader \
 		netaddr \
 		gitpython \
+		reportlab \
+		colorama \
+		xlsxwriter \
+		ciscoconfparse \
+		plantuml
+	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		seqdiag \
 		sphinxcontrib-seqdiag \
 		nwdiag \
@@ -125,27 +140,13 @@ rootfs: base.tar.xz profile
 		sphinxcontrib-blockdiag \
 		actdiag \
 		sphinxcontrib-actdiag \
-		sphinx-git \
-		sphinx_rtd_theme \
-		plantuml \
 		sphinxcontrib-plantuml \
-		reportlab \
-		colorama \
-		xlsxwriter \
-		pandas \
-		tablib \
-		ciscoconfparse \
-		nety \
 		sphinxcontrib-jupyter \
 		sphinxcontrib_ansibleautodoc \
 		sphinxcontrib-confluencebuilder \
-		pyyaml \
-		yamlreader \
 		sphinxcontrib-drawio \
 		sphinx-markdown-builder \
-		sphinxcontrib-fulltoc \
-		numpy \
-		cython
+		sphinxcontrib-fulltoc
 	sudo chroot rootfs \
 		/usr/bin/$(DLR) $(DLR_FLAGS) $(PLANTUML_URL) \
 		-o /usr/local/plantuml.jar

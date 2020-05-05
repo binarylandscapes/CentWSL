@@ -142,7 +142,8 @@ rootfs: base.tar.xz profile
 		sphinxcontrib_ansibleautodoc \
 		sphinxcontrib-confluencebuilder \
 		sphinxcontrib-drawio \
-		sphinx-markdown-builder \
+		sphinx-markdown-builder
+	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		sphinxcontrib-fulltoc
 	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		pip \

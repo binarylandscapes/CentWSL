@@ -107,9 +107,7 @@ rootfs: base.tar.xz profile
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		python36 \
 		python3-pip \
-		python36-devel \
-		python3-numpy \
-		python3-Cython
+		python36-devel
 	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		pip \
 		wheel
@@ -145,7 +143,9 @@ rootfs: base.tar.xz profile
 		yamlreader \
 		sphinxcontrib-drawio \
 		sphinx-markdown-builder \
-		sphinxcontrib-fulltoc
+		sphinxcontrib-fulltoc \
+		numpy \
+		cython
 	sudo chroot rootfs \
 		/usr/bin/$(DLR) $(DLR_FLAGS) $(PLANTUML_URL) \
 		-o /usr/local/plantuml.jar

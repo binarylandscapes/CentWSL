@@ -45,16 +45,16 @@ Write-Host -ForegroundColor Green ("`nInstallation of Windows Subsystem for Linu
 Write-Host -ForegroundColor Yellow ("`nConfiguring user:$user for Windows Subsystem for Linux (WSL), $distroName Linux")
 Write-Host -ForegroundColor Yellow ("`nSet password for $user when prompted")
 Start-Process $wslPath\$wslDistro -ArgumentList "run adduser $user --uid 1000" -NoNewWindow -Wait
-Start-Process $wslPath\$wslDistro -ArgumentList "run passwd $user -NoNewWindow -Wait
+Start-Process $wslPath\$wslDistro -ArgumentList "run passwd $user "-NoNewWindow -Wait
 Start-Process $wslPath\$wslDistro -ArgumentList "run usermod -aG wheel $user" -NoNewWindow -Wait
 Start-Process $wslPath\$wslDistro -ArgumentList "config --default-uid 1000" -NoNewWindow -Wait
 Start-Process $wslPath\$wslDistro -ArgumentList "config --default-term wt" -NoNewWindow -Wait
 Start-Process $wslPath\$wslDistro -ArgumentList "run echo export PLANTUML=/usr/local/plantuml.jar >> ~/.bash_profile"  -NoNewWindow -Wait # would like to add this to makefile
-Start-Process $wslPath\$wslDistro -ArgumentList "run echo neofetch >> ~/.bash_profile"  -NoNewWindow -Wait # would like to add this to makefile
-Start-Process $wslPath\$wslDistro -ArgumentList "run echo from pprint import pprint >> ~/.pyrc"  -NoNewWindow -Wait # would like to add this to makefile
-Start-Process $wslPath\$wslDistro -ArgumentList "run echo export DISPLAY=:1 >> ~/.bash_profile"  -NoNewWindow -Wait # would like to add this to makefile
-Start-Process $wslPath\$wslDistro -ArgumentList "run git config --global user.name $user"  -NoNewWindow -Wait
-Start-Process $wslPath\$wslDistro -ArgumentList "run git config --global user.email '$email'"  -NoNewWindow -Wait
+Start-Process $wslPath\$wslDistro -ArgumentList "run echo neofetch >> ~/.bash_profile" -NoNewWindow -Wait # would like to add this to makefile
+Start-Process $wslPath\$wslDistro -ArgumentList "run echo from pprint import pprint >> ~/.pyrc" -NoNewWindow -Wait # would like to add this to makefile
+Start-Process $wslPath\$wslDistro -ArgumentList "run echo export DISPLAY=:1 >> ~/.bash_profile" -NoNewWindow -Wait # would like to add this to makefile
+Start-Process $wslPath\$wslDistro -ArgumentList "run git config --global user.name $user" -NoNewWindow -Wait
+Start-Process $wslPath\$wslDistro -ArgumentList "run git config --global user.email '$email'" -NoNewWindow -Wait
 
 # Create desktop shortcut for user
 $WScriptShell = New-Object -ComObject WScript.Shell

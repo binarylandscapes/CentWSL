@@ -103,7 +103,8 @@ rootfs: base.tar.xz profile
 		dejavu-sans-mono-fonts \
 		dejavu-serif-fonts \
 		ansible \
-		redhat-rpm-config
+		redhat-rpm-config \
+		podman-docker
 	sudo chroot rootfs /bin/rm /var/lib/rpm/.rpm.lock
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		python36 \

@@ -21,15 +21,12 @@ notifications:
   email: false
 deploy:
   provider: releases
-  file_glob: true
+  api_key:
+    secure: rqMJg/Ss029rKG727wDeHgoyevdex1W5uFNrMZIb6Tk6Iq48RWW09+UzJ6he1zcKZovs3Bnw82NodXIl0oUi00wSJOvbTA4ukzZzAVCEwGs7RgVG0V0/QNrye3HAhN3LLZsEtxsxVguXHITL/cnOxzNxIL26+aPglf4pZNnaF6MsfLcNJAAllj2jk9dD5uSzAn2zs5l9YwBubob5IpcxobUe1XU2O2pY88411ZpdNckk87rkHmb/yDhGi0UGB7OzJtEKivUL5A7uEVdi0678++LNWNVF/zyzYzVe18XTEdJgJxIqXmfN8/P+W51/BEWNuhhnvY/EEjNcrDEbK2lXh8MS1Ep42MgWcB0QvbkOo0V0TF3hPqHpNRWMIwI4eYKZYgCAbu2gUEuB9BpYOtyhUBlR45TyR8bwFWBzYgq8I8liaO+g0nfY0GzUYZUvZBFsy1rx0GdfvjWyHc0Ll347Ea1oJBYHe9e87EUrDwjczEJOxVqq588/M/XI25JUmLWQd5X987VhtV8iiW+5dl95Z2HnJn7cCzksrru8EVZVsVyYur851Xzl7MAVp09zvCiHYmbRWf20/ZqSfb4yZUEdr+PHOxamJEGf1ZbNDeRjpr9wU01FfNfiPtkHaw7zv9Lnc/7/lq/fwY7ZYbUy4bFCRSV5xxon3LgPF880gk7um98=
   file: CentOS*.{zip}
-  skip_cleanup: true
-  draft: true
-  overwrite: true
   on:
     repo: binarylandscapes/CentWSL
-    tags: true
-    all_branches: true
+  skip_cleanup: 'true'
 env:
   global:
     secure: Pq7Td/zt7EPeUN5opm2BSY072/CSm6q2XfRyk7h5+vFPNdrzr/XbdrLqcCyRskfcqhvlKXYF8Fpd93nDEP8kyNC4MpXR+Ex0EYclxjgUZoz1p+UKz9RcrLbKNzzg+du18l4YBt3V8F6CdfBUwljQDN24cURFD0CSZvzXJ07Daaq277vA20NZBDOyvhDDY2wbaWLSpTWnNMFsM/bYqW3jAM6JRA/JwNQw9DJlM6ClYzAZXBbL52ltBsyi/yRQYgkYTubBkqkIlKOGWuM+KWHd4OICEyRiJSfHN0pKj/74ekuetT3kkqc5WERfDLpB31CA3v6bcuynEEl0gGDs5HXkxNJw6Wv2s+KRRLo8IGw/W/Ik7atOEoWt3YFYjdv9UxuewjnGKvdSeknaC+P4Wpi9CikC8lWBTKKQrhhFgISrxjgvoVJ14tEHH9UABJwxcA7oUMM3HP+D43tsCOiWY2NKf18nxwTsbqXB0Ol1edBBX9zBXCqGEjSztJQs4EtnVGizGbUO/F/4x0yCrhN/xIdUQDQoqNtC2FpIKNZnKFq/lauvS3cOuraOWpVjbeB6rJotDHyXLYLbkBEaRrn09FlB07owwNwYMmv/MFQhj27AHN7rVED9DF5V6jub2iIEFptwGXGsma1EHwIKA6XKxIXcJC1I0/7JWplSF+Yg3ncWH60=

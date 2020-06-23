@@ -23,7 +23,7 @@ deploy:
   provider: releases
   api_key:
     secure: rqMJg/Ss029rKG727wDeHgoyevdex1W5uFNrMZIb6Tk6Iq48RWW09+UzJ6he1zcKZovs3Bnw82NodXIl0oUi00wSJOvbTA4ukzZzAVCEwGs7RgVG0V0/QNrye3HAhN3LLZsEtxsxVguXHITL/cnOxzNxIL26+aPglf4pZNnaF6MsfLcNJAAllj2jk9dD5uSzAn2zs5l9YwBubob5IpcxobUe1XU2O2pY88411ZpdNckk87rkHmb/yDhGi0UGB7OzJtEKivUL5A7uEVdi0678++LNWNVF/zyzYzVe18XTEdJgJxIqXmfN8/P+W51/BEWNuhhnvY/EEjNcrDEbK2lXh8MS1Ep42MgWcB0QvbkOo0V0TF3hPqHpNRWMIwI4eYKZYgCAbu2gUEuB9BpYOtyhUBlR45TyR8bwFWBzYgq8I8liaO+g0nfY0GzUYZUvZBFsy1rx0GdfvjWyHc0Ll347Ea1oJBYHe9e87EUrDwjczEJOxVqq588/M/XI25JUmLWQd5X987VhtV8iiW+5dl95Z2HnJn7cCzksrru8EVZVsVyYur851Xzl7MAVp09zvCiHYmbRWf20/ZqSfb4yZUEdr+PHOxamJEGf1ZbNDeRjpr9wU01FfNfiPtkHaw7zv9Lnc/7/lq/fwY7ZYbUy4bFCRSV5xxon3LgPF880gk7um98=
-  file: CentOS*.{zip}
+  file: CentOS8.zip
   on:
     repo: binarylandscapes/CentWSL
     tags: true

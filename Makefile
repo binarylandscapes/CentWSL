@@ -110,6 +110,7 @@ rootfs: base.tar.xz profile
 		python38 \
 		python38-pip \
 		python38-devel
+	sudo chroot rootfs /sbin/alternatives --set python3 /usr/bin/python3.8
 	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		sphinx \
 		sphinx-autobuild \

@@ -3,13 +3,13 @@ LNCR_EXE=CentOS8.exe
 
 DLR=curl
 DLR_FLAGS=-L
-BASE_URL=http://cloud.centos.org/centos/8/x86_64/images/CentOS-8-Container-8.1.1911-20200113.3-layer.x86_64.tar.xz
+BASE_URL=http://cloud.centos.org/centos/8/x86_64/images/CentOS-8-Container-8.2.2004-20200611.2.x86_64.tar.xz
 LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/20040300/icons.zip
 LNCR_ZIP_EXE=CentOS.exe
 
 PLANTUML_URL=http://sourceforge.net/projects/plantuml/files/plantuml.jar/download
 ACROTEX_URL=http://mirrors.ctan.org/macros/latex/contrib/acrotex.zip
-DRAWIO_URL=https://github.com/jgraph/drawio-desktop/releases/download/v13.0.3/draw.io-x86_64-13.0.3.rpm
+DRAWIO_URL=https://github.com/jgraph/drawio-desktop/releases/download/v13.3.5/draw.io-x86_64-13.3.5.rpm
 
 INSTALL_PS_SCRIPT=https://raw.githubusercontent.com/binarylandscapes/CentWSL/$(BRANCH)/install.ps1
 FEATURE_PS_SCRIPT=https://raw.githubusercontent.com/binarylandscapes/CentWSL/$(BRANCH)/addWSLfeature.ps1
@@ -51,7 +51,9 @@ rootfs.tar.gz: rootfs
 rootfs: base.tar.xz profile
 	@echo -e '\e[1;31mBuilding rootfs...\e[m'
 	mkdir rootfs
-	sudo tar -xpf base.tar.xz -C rootfs
+	sudo tar -xpf base.tar.xz -C .
+	sudo tar -xpf ./84a5eb5aec87c0ec5cd558dd38d71af54efc1c5876866961e5085cf49d3a3167/layer.tar -C rootfs
+	sudo rm -rf ./84a5eb5aec87c0ec5cd558dd38d71af54efc1c5876866961e5085cf49d3a3167
 	sudo cp -f /etc/resolv.conf rootfs/etc/resolv.conf
 	sudo cp -f profile rootfs/etc/profile
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
@@ -107,9 +109,10 @@ rootfs: base.tar.xz profile
 		podman-docker
 	sudo chroot rootfs /bin/rm /var/lib/rpm/.rpm.lock
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
-		python36 \
-		python3-pip \
-		python36-devel
+		python38 \
+		python38-pip \
+		python38-devel
+	sudo chroot rootfs /sbin/alternatives --set python3 /usr/bin/python3.8
 	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		sphinx \
 		sphinx-autobuild \
@@ -144,6 +147,7 @@ rootfs: base.tar.xz profile
 		sphinxcontrib_ansibleautodoc \
 		sphinxcontrib-confluencebuilder \
 		sphinxcontrib-drawio \
+		sphinxcontrib-drawio-html \
 		sphinx-markdown-builder
 	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		pip \

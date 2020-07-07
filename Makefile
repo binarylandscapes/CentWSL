@@ -107,9 +107,9 @@ rootfs: base.tar.xz profile
 		podman-docker
 	sudo chroot rootfs /bin/rm /var/lib/rpm/.rpm.lock
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
-		python36 \
-		python3-pip \
-		python36-devel
+		python38 \
+		python38-pip \
+		python38-devel
 	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
 		sphinx \
 		sphinx-autobuild \

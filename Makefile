@@ -52,7 +52,6 @@ rootfs: base.tar.xz profile
 	@echo -e '\e[1;31mBuilding rootfs...\e[m'
 	mkdir rootfs
 	sudo tar -xpf base.tar.xz -C .
-	sudo cp -f profile rootfs/etc/profile
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \
 		epel-release \
 		dnf-plugins-core

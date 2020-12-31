@@ -52,8 +52,6 @@ rootfs: base.tar.xz profile
 	@echo -e '\e[1;31mBuilding rootfs...\e[m'
 	mkdir rootfs
 	sudo tar -xpf base.tar.xz -C .
-	sudo tar -xpf ./84a5eb5aec87c0ec5cd558dd38d71af54efc1c5876866961e5085cf49d3a3167/layer.tar -C rootfs
-	sudo rm -rf ./84a5eb5aec87c0ec5cd558dd38d71af54efc1c5876866961e5085cf49d3a3167
 	sudo cp -f /etc/resolv.conf rootfs/etc/resolv.conf
 	sudo cp -f profile rootfs/etc/profile
 	sudo chroot rootfs /bin/dnf install -y --nogpgcheck \

@@ -3,13 +3,13 @@ LNCR_EXE=CentOS8.exe
 
 DLR=curl
 DLR_FLAGS=-L
-BASE_URL=http://cloud.centos.org/centos/8/x86_64/images/CentOS-8-Container-8.2.2004-20200611.2.x86_64.tar.xz
-LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/20040300/icons.zip
+BASE_URL=http://cloud.centos.org/centos/8/x86_64/images/CentOS-8-Container-8.3.2011-20201204.2.x86_64.tar.xz
+LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/20122800/icons.zip
 LNCR_ZIP_EXE=CentOS.exe
 
 PLANTUML_URL=http://sourceforge.net/projects/plantuml/files/plantuml.jar/download
 ACROTEX_URL=http://mirrors.ctan.org/macros/latex/contrib/acrotex.zip
-DRAWIO_URL=https://github.com/jgraph/drawio-desktop/releases/download/v13.3.5/draw.io-x86_64-13.3.5.rpm
+DRAWIO_URL=https://github.com/jgraph/drawio-desktop/releases/download/v14.1.5/draw.io-x86_64-14.1.5.rpm
 
 INSTALL_PS_SCRIPT=https://raw.githubusercontent.com/binarylandscapes/CentWSL/$(BRANCH)/install.ps1
 FEATURE_PS_SCRIPT=https://raw.githubusercontent.com/binarylandscapes/CentWSL/$(BRANCH)/addWSLfeature.ps1
@@ -114,7 +114,7 @@ rootfs: base.tar.xz profile
 		python38-devel
 	sudo chroot rootfs /sbin/alternatives --set python3 /usr/bin/python3.8
 	sudo -H chroot rootfs /usr/bin/python3 -m pip install --upgrade \
-		sphinx \
+		sphinx==3.4.1 \
 		sphinx-autobuild \
 		sphinx_rtd_theme \
 		sphinx-jinja \
